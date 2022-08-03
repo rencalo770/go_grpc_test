@@ -1,0 +1,21 @@
+syntax = "proto3";
+package proto;
+//option java_multiple_files = true;
+//option java_package ="com.grpc.gen.service";
+//option java_outer_classname="GreetingService";
+
+//import "hello.proto";
+option go_package = "./;proto";
+
+message FileRequest{
+  int32 id = 1;
+}
+
+message  FileResponse{
+  int32 length = 1;
+  bytes bs = 2;
+}
+
+service FileService{
+  rpc GetFile(FileRequest) returns (stream FileResponse){};
+}
